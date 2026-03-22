@@ -1,21 +1,11 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
     {
-      "src": "dist/index.js",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/index.js"
-    }
-  ],
-  "functions": {
-    "dist/index.js": {
-      "runtime": "nodejs18.x",
-      "includeFiles": ["dist/public/**"]
-    }
-  }
+  ]
 }
